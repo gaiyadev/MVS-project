@@ -1,0 +1,92 @@
+body {	
+	font-size: 1.2em;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	
+}
+nav {
+	background-color: #2b3873;
+	color: #fff;
+}
+.fa.fa-fw.fa-envelope, .fa.fa-fw.fa-bell, .fa.fa-fw.fa-sign-out, .fa.fa-fw.fa-dashboard, .fa.fa-fw.fa-wrench, .fa.fa-fw.fa-user {
+	color: #fff;
+}
+
+.footer {
+	background-color: #2b3873;
+}
+.breadcrumb {
+	background-color: #2b3873;
+	font-size: 1.2em;
+}
+.content-wrapper {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #3481B8 , #fff, #2874B2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #3481B8, #fff, #2874B2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #3481B8, #fff,  #2874B2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #3481B8, #fff, #2874B2); /* Standard syntax */
+}
+hr {
+	background-color: #fff;
+}
+button.navbar-toggler {
+	background-color: #3481B8;	
+	border: none;
+	color: white;
+
+}
+.modal-body {
+	background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #3481B8 , #fff, #2874B2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #3481B8, #fff, #2874B2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #3481B8, #fff,  #2874B2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #3481B8, #fff, #2874B2); /* Standard syntax */
+ 	border: none;
+  text-align: justify;
+  color: black;
+  font-size: 1.3em;
+}
+.modal-content {
+	border: none;
+
+}
+.modal-header, .modal-footer {
+	background-color: #2874B2;
+	color: #fff;
+	text-align: center; 
+	border: none;
+}
+
+.modal {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.btn.btn-secondary {
+	background-color: #C63927;
+	border: none;
+}
+
+.btn.btn-secondary:focus {	
+	border: none;
+}
+
+.btn.btn-secondary:hover {
+	opacity: .9;
+	cursor: pointer;
+}
+
+.btn.btn-primary {
+	border: none;
+}
+
+.btn.btn-primary:hover {
+	cursor: pointer;
+}
+.btn.btn-primary:focus {
+	border: none;
+
+}
+.input-group-addon {
+	
+}

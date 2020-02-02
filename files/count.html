@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link  rel="stylesheet" href="css/dashboard.css" >  
+</head>
+<!-- 2017 Countdown - Simple JS, HTML, & CSS only -->
+
+<body>
+	<style type="text/css">
+		
+/ ========================== //
+// 2017 Countdown CSS
+// ========================== //
+
+body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  font-family: helvetica;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    165deg, 
+    rgba(194, 233, 221, 0.5) 3%,
+    rgba(104, 119, 132, 0.5) 100%);
+}
+
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 75%;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.countdown__item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  min-width: 31%;
+  margin-bottom: 1rem;
+
+// Instead of a modifier one could use a pseudo-class:
+//   &:first-child {
+//     width: 100%;
+//   }
+  
+//   &:not(:first-child) {
+//     flex: 1;
+//   }
+}
+
+.countdown__item--large {
+  flex: auto;
+  width: 100%;
+  font-size: 2.75em;
+}
+
+.countdown__timer {
+  padding: .25em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.countdown__label {
+  font-size: 1em;
+  padding-top: .40em;
+  
+  .countdown__item--large & {
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      background-image: linear-gradient(
+        left,
+        rgba(0, 0, 0, 0), 
+        rgba(0, 0, 0, .4),
+        rgba(0, 0, 0, 0));
+    }
+
+  }
+}
+
+
+
+
+// ========================== //
+// 2013 Countdown CSS
+// ========================== //
+
+// @import "compass/css3";
+// html {
+//     height: 100%;
+// }
+// body {
+//     display: flex;
+//     align-items: center;
+//     min-height: 100%;
+//     background-image: linear-gradient(165deg, rgba(194, 233, 221, 0.5) 3%, rgba(104, 119, 132, 0.5) 100%);
+//     text-align: center;
+//     font-family: helvetica;
+//     text-transform: uppercase;
+// }
+// .countdown {
+//     position: relative;
+//     top: 50%;
+//     display: block;
+//     height: auto;
+//     max-width: 35em;
+//     margin: 0 auto;
+//     input {
+//         text-transform: uppercase;
+//         text-align: center;
+//         font-family: helvetica;
+//         height: 1.25em;
+//         border: 1px solid black;
+//         font-weight: 700;
+//         font-size: 9.5rem;
+//         width: 80%;
+//         margin: 0 10px;
+//         @include border-radius(5px);
+//     }
+//     h3 {
+//         font-size: 5.0rem;
+//         font-weight: 700;
+//         letter-spacing: 5px;
+//         margin: -30px;
+//     }
+//     .bottom_time input {
+//         padding: 2.0% 4.1%;
+//         display: inline-block;
+//         height: 1em;
+//         font-weight: 500;
+//         font-size: 2.5rem;
+//         color: black;
+//         width: 15.5%;
+//     }
+//     ul {
+//         padding: 0;
+//         margin: .5em 0;
+//         li {
+//             display: inline;
+//             font-weight: 500;
+//             padding: 0 11%;
+//         }
+//     }
+//     hr.soft {
+//         height: 1px;
+//         margin: 1.5em 0;
+//         background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, .4)), to(rgba(0, 0, 0, 0)));
+//         background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+//         background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+//         background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+//         background-image: linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+//         border: 0;
+//     }
+// }
+
+	</style>
+
+	<script type="text/javascript">
+		
+		// ========================== //
+// 2017 Countdown JS
+// ========================== //
+
+const countdown = new Date("May 7, 2020");
+
+function getRemainingTime(endtime) {
+  const milliseconds = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor( (milliseconds/1000) % 60 );
+  const minutes = Math.floor( (milliseconds/1000/60) % 60 );
+  const hours = Math.floor( (milliseconds/(1000*60*60)) % 24 );
+  const days = Math.floor( milliseconds/(1000*60*60*24) );
+
+  return {
+    'total': milliseconds,
+    'seconds': seconds,
+    'minutes': minutes,
+    'hours': hours,
+    'days': days,
+  };
+}
+  
+function initClock(id, endtime) {
+  const counter = document.getElementById(id);
+  const daysItem = counter.querySelector('.js-countdown-days');
+  const hoursItem = counter.querySelector('.js-countdown-hours');
+  const minutesItem = counter.querySelector('.js-countdown-minutes');
+  const secondsItem = counter.querySelector('.js-countdown-seconds');
+
+  function updateClock() {
+    const time = getRemainingTime(endtime);
+
+    daysItem.innerHTML = time.days;
+    hoursItem.innerHTML = ('0' + time.hours).slice(-2);
+    minutesItem.innerHTML = ('0' + time.minutes).slice(-2);
+    secondsItem.innerHTML = ('0' + time.seconds).slice(-2);
+
+    if (time.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+
+initClock('js-countdown', countdown);
+
+
+
+
+// ========================== //
+// 2013 Countdown JS
+// ========================== //
+
+// function counter() {
+//   var today = new Date(); //variable contains current date and time
+
+//   var days = calcDays(today); //calculate the time left until set date below
+//   document.countDown.daysLeft.value = Math.floor(days); // displays days rounded to the next lowest integer
+
+//   var hours = (days - Math.floor(days)) * 24; //calculate the hours left in the current day
+//   document.countDown.hrLeft.value = Math.floor(hours); // display hours rounded to the next lowest integer
+
+//   var minutes = (hours - Math.floor(hours)) * 60; // calculate the minutes left in the current hour
+//   document.countDown.minLeft.value = Math.floor(minutes); // display minutes rounded to the next lowest integer
+
+//   var seconds = (minutes - Math.floor(minutes)) * 60; //calculate the seconds left in the current minute
+//   document.countDown.secLeft.value = Math.floor(seconds); // display seconds rounded to the next lowest integer
+// }
+
+// function calcDays(currentDate) {
+//   //create a date object for date of graduation
+//   //calculate the difference between currentDate and set date
+//   setDate = new Date("May 6, 2013");
+//   currentTime = currentDate.getFullYear() + 1;
+//   setDate.setFullYear(currentTime);
+
+//   days = (setDate - currentDate) / (1000 * 60 * 60 * 24);
+//   return days;
+// }
+
+// setInterval('counter()', 1000)
+	</script>
+  <div class="countdown" id="js-countdown">
+    <div class="countdown__item countdown__item--large">
+      <div class="countdown__timer js-countdown-days" aria-labelledby="day-countdown">
+        
+      </div>
+      
+      <div class="countdown__label" id="day-countdown">Days</div>
+    </div>
+    
+    <div class="countdown__item">
+      <div class="countdown__timer js-countdown-hours" aria-labelledby="hour-countdown">
+        
+      </div>
+      
+      <div class="countdown__label" id="hour-countdown">Hours</div>
+    </div>
+    
+    <div class="countdown__item">
+      <div class="countdown__timer js-countdown-minutes" aria-labelledby="minute-countdown">
+        
+      </div>
+      
+      <div class="countdown__label" id="minute-countdown">Minutes</div>
+    </div>
+    
+    <div class="countdown__item">
+      <div class="countdown__timer js-countdown-seconds" aria-labelledby="second-countdown">
+        
+      </div>
+      
+      <div class="countdown__label" id="second-countdown">Seconds</div>
+    </div>
+  </div>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" ></script>
+     <script src="jquery.min.js"></script>
+      <!-- ==================================
+        INCHARGE OF COLLAPSE NAVIGATION BARS
+    ========================================-->
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 26/11/2017 -->
+<!-- 2013 Countdown -->
+<!-- <body>
+  <form class="countdown" name="countDown">
+    <input size="4" name="daysLeft" />
+    <hr class="soft">
+    <h3>Days</h3>
+    <hr class="soft">
+    <span class="bottom_time"><input size="3"  name="hrLeft" /></span>
+    <span class="bottom_time"><input size="3"  name="minLeft" /></span>
+    <span class="bottom_time"><input size="3"  name="secLeft" /></span>
+    <ul>
+      <li>Hrs</li>
+      <li>Min</li>
+      <li>Sec</li>
+    </ul>
+  </form>
+</body> -->
+</html>
